@@ -1,0 +1,16 @@
+active_flow: build_epic
+active_epic: null
+active_story: null
+bigpowers_version: 2.61.4
+handoff:
+  context: "Showcase repo scaffolded from seed-conventions. Scope and release plan committed from day one."
+  next_skill: survey-context
+epic_cycle:
+  epic_id: null
+  story_id: null
+  step: 0
+  yolo_mode: false
+metrics:
+  story_start: null
+release:
+  version: 0.1.0

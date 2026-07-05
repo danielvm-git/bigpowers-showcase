@@ -1,0 +1,10 @@
+terms:
+  - term: short code
+    definition: A 6-character URL-safe string that uniquely identifies a stored URL link.
+    aliases: [code, slug]
+  - term: link
+    definition: A stored mapping of a short code to its original URL, with metadata (created timestamp, hit count).
+  - term: redirect server
+    definition: A local HTTP server that resolves short codes by issuing 302 redirects to the original URL.
+  - term: hit
+    definition: A single successful redirect served by the redirect server. Counted per link.

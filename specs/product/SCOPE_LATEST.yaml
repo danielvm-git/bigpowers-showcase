@@ -1,0 +1,43 @@
+product: shorty
+version: 0.1.0
+description: >
+  A command-line URL shortener with local SQLite storage.
+  Shorten URLs, manage links, resolve short codes, and
+  serve redirects via a local HTTP server.
+
+functional_requirements:
+  - id: FR-01
+    description: Shorten a URL — accept a long URL, return a short code
+    priority: P0
+  - id: FR-02
+    description: Resolve a short code — return the original URL
+    priority: P0
+  - id: FR-03
+    description: List all stored links with metadata (code, URL, created, hits)
+    priority: P1
+  - id: FR-04
+    description: Delete a stored link by short code
+    priority: P1
+  - id: FR-05
+    description: Serve HTTP redirects from the stored links on localhost
+    priority: P2
+  - id: FR-06
+    description: Track hit count per short code
+    priority: P2
+
+non_functional_requirements:
+  - id: NFR-01
+    description: CLI responds in under 100ms for CRUD operations
+  - id: NFR-02
+    description: SQLite database file stored in user config directory
+  - id: NFR-03
+    description: Short codes are 6 characters, URL-safe alphabet
+  - id: NFR-04
+    description: Duplicate URLs reuse existing short code (idempotent)
+
+out_of_scope:
+  - User accounts or authentication
+  - Custom short codes
+  - Analytics dashboard
+  - Cloud hosting
+  - Browser extension

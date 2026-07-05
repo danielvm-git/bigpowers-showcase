@@ -1,0 +1,47 @@
+release:
+  version: 0.1.0
+  codename: "First Light"
+  status: planned
+  bump_hint: minor
+
+build_order:
+  - e01
+
+epics:
+  - id: e01
+    title: "Core URL Shortener — shorten, resolve, list, delete"
+    wsjf: 5.0
+    bcps: 8
+    status: proposed
+    stories:
+      - id: e01s01
+        bcp: 2
+        title: "Scaffold the project — pyproject.toml, directory structure, db init"
+        status: todo
+      - id: e01s02
+        bcp: 3
+        title: "Shorten a URL — accept long URL, return short code with SQLite persistence"
+        status: todo
+      - id: e01s03
+        bcp: 2
+        title: "Resolve a short code — look up and return the original URL"
+        status: todo
+      - id: e01s04
+        bcp: 1
+        title: "List and delete links — CRUD management commands"
+        status: todo
+
+  - id: e02
+    title: "Redirect Server + Hit Tracking"
+    wsjf: 3.0
+    bcps: 5
+    status: proposed
+    stories:
+      - id: e02s01
+        bcp: 2
+        title: "Local HTTP redirect server — serve stored links on localhost"
+        status: todo
+      - id: e02s02
+        bcp: 3
+        title: "Hit tracking — increment counter on redirect, show in list"
+        status: todo

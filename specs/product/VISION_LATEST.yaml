@@ -1,0 +1,4 @@
+vision: >
+  shorty makes URL shortening a local-first, zero-dependency operation.
+  No cloud service, no API keys, no accounts. Your links, your machine,
+  your control — with the speed of a native CLI and the simplicity of SQLite.
