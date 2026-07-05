@@ -1,0 +1,14 @@
+id: e01
+title: "Core URL Shortener — shorten, resolve, list, delete"
+wsjf: 5.0
+bcps: 8
+status: active
+stories:
+  - id: e01s01
+    bcp: 2
+    status: todo
+    title: "Scaffold the project — pyproject.toml, directory structure, db init"
+    tasks:
+      - id: 1
+        description: "Create pyproject.toml with deps (click, pytest, ruff, mypy), shorty/ package dir structure, db module with init"
+        verify: "python -c 'import shorty; from shorty.db import init_db; init_db(\":memory:\"); print(\"OK\")'"
