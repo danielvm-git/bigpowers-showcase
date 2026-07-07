@@ -56,9 +56,60 @@ def shorten(url: str, db_path: str | None = None) -> Link:
         conn.close()
 
 
+def resolve(code: str, db_path: str | None = None) -> Link:
+    """Resolve a short code to its original URL. Raises ValueError if not found."""
+    conn = get_connection(db_path)
+    try:
+        row = conn.execute(
+            "SELECT code, url, created_at, hits FROM links WHERE code = ?", (code,)
+        ).fetchone()
+        if row is None:
+            raise ValueError(f"Short code not found: {code}")
+        return Link(
+            code=row[0],
+            url=row[1],
+            created_at=datetime.fromisoformat(row[2]),
+            hits=row[3],
+        )
+    finally:
+        conn.close()
+
+
 def _validate_url(url: str) -> None:
     """Raise ValueError if url is not a valid HTTP/HTTPS URL."""
     if not url.startswith(("http://", "https://")):
         raise ValueError(f"URL must start with http:// or https://, got: {url}")
     if len(url) > 2048:
         raise ValueError(f"URL too long: {len(url)} chars (max 2048)")
+
+
+def list_links(db_path: str | None = None) -> list[Link]:
+    """Return all stored links, ordered by creation date (newest first)."""
+    conn = get_connection(db_path)
+    try:
+        rows = conn.execute(
+            "SELECT code, url, created_at, hits FROM links ORDER BY created_at DESC"
+        ).fetchall()
+        return [
+            Link(
+                code=r[0],
+                url=r[1],
+                created_at=datetime.fromisoformat(r[2]),
+                hits=r[3],
+            )
+            for r in rows
+        ]
+    finally:
+        conn.close()
+
+
+def delete_link(code: str, db_path: str | None = None) -> None:
+    """Delete a link by short code. Raises ValueError if not found."""
+    conn = get_connection(db_path)
+    try:
+        cursor = conn.execute("DELETE FROM links WHERE code = ?", (code,))
+        conn.commit()
+        if cursor.rowcount == 0:
+            raise ValueError(f"Short code not found: {code}")
+    finally:
+        conn.close()

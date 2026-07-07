@@ -3,8 +3,6 @@
 import pathlib
 import sqlite3
 
-import pytest
-
 from shorty.db import init_db, get_connection
 
 
