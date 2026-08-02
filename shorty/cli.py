@@ -3,9 +3,9 @@
 import click
 
 from shorty.db import init_db
-from shorty.shortener import shorten as _shorten
+from shorty.shortener import delete_link, list_links
 from shorty.shortener import resolve as _resolve
-from shorty.shortener import list_links, delete_link
+from shorty.shortener import shorten as _shorten
 
 
 @click.group()

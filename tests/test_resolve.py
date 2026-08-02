@@ -5,7 +5,7 @@ import pathlib
 import pytest
 
 from shorty.db import init_db
-from shorty.shortener import resolve, list_links, delete_link, shorten
+from shorty.shortener import delete_link, list_links, resolve, shorten
 
 
 def _setup_db(tmp_path: pathlib.Path) -> str:

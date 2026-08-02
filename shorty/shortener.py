@@ -1,9 +1,9 @@
 """URL shortening logic — code generation + URL validation + persistence."""
 
 import secrets
-import string
 import sqlite3
-from datetime import datetime
+import string
+from datetime import UTC, datetime
 
 from shorty.db import get_connection
 from shorty.models import Link
@@ -45,7 +45,7 @@ def shorten(url: str, db_path: str | None = None) -> Link:
                 return Link(
                     code=code,
                     url=url,
-                    created_at=datetime.now(),
+                    created_at=datetime.now(UTC),
                     hits=0,
                 )
             except sqlite3.IntegrityError:

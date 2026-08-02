@@ -4,7 +4,7 @@ import pathlib
 
 import pytest
 
-from shorty.shortener import shorten, _validate_url
+from shorty.shortener import _validate_url, shorten
 
 
 def test_shorten_returns_link(tmp_path: pathlib.Path) -> None:

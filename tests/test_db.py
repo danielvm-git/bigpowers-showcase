@@ -3,7 +3,7 @@
 import pathlib
 import sqlite3
 
-from shorty.db import init_db, get_connection
+from shorty.db import get_connection, init_db
 
 
 def test_init_db_creates_table(tmp_path: pathlib.Path) -> None:

@@ -4,7 +4,6 @@ import os
 import sqlite3
 from pathlib import Path
 
-
 DEFAULT_DB_DIR = Path.home() / ".local" / "share" / "shorty"
 DEFAULT_DB_PATH = DEFAULT_DB_DIR / "shorty.db"
 
