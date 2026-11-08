@@ -1,4 +1,4 @@
-name: CI
+name: Test Build Release
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.ref }}
+  group: pipeline-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -91,4 +91,11 @@ jobs:
         with:
           name: deploy-meta
           path: deploy-meta.json
+          retention-days: 3
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
           retention-days: 3
